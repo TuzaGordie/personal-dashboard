@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Note } from 'src/app/shared/models/note';
 import { NoteService } from 'src/app/shared/services/note.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-note',
@@ -10,15 +11,30 @@ import { NoteService } from 'src/app/shared/services/note.service';
 })
 export class AddNoteComponent implements OnInit {
 
-  constructor(private noteService: NoteService) { }
+  Title = '';
+  Content = '';
+  isValid = false;
+
+  constructor(private noteService: NoteService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(form: NgForm) {
+
+    if(form.value.title === '' && form.value.content === '') {
+      this.isValid = true;
+      return;
+    }
     const note = new Note(form.value.title, form.value.content)
-    console.log(note);
-    this.noteService.addNote(note)
+    this.noteService.addNote(note);
+    this.router.navigateByUrl('/notes')
+  }
+
+  checker() {
+    if(this.Title.length > 0 || this.Content.length > 0) {
+      this.isValid = false;
+    }
   }
 
 }

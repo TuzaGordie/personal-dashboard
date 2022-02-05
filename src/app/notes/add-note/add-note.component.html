@@ -2,8 +2,16 @@
   <h2 class="is-bold">New Note</h2>
 
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-    <input class="text-box" type="text" ngModel name="title" placeholder="Note title...">
-    <textarea class="text-area" ngModel name="content" placeholder="Note content..."></textarea>
+    <div class="form-field">
+      <input class="text-box" type="text" ngModel [(ngModel)]="Title" (keypress)="checker()"
+       name="title" placeholder="Note title...">
+        <p *ngIf="isValid">Enter a title or content</p>
+    </div>
+
+    <div class="form-field">
+      <textarea class="text-area" ngModel name="content" [(ngModel)]="Content" (keypress)="checker()"
+      placeholder="Note content..."></textarea>
+    </div>
 
     <div class="btns-container">
       <a class="btn" routerLink="../">Cancel</a>

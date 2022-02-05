@@ -75,13 +75,16 @@ h2.is-bold {
   backdrop-filter: blur(20px);
 }
 
+.form-field {
+  margin-bottom: 20px;
+}
+
 .text-box,
 .text-area {
   display: block;
   font-size: 18px;
   font-family: inherit;
   padding: 8px 10px;
-  margin-bottom: 20px;
   width: 100%;
   border: 2px solid rgba(black, 0.3);
   border-radius: 4px;
