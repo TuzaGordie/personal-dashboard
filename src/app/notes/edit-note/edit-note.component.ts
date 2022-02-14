@@ -26,6 +26,7 @@ export class EditNoteComponent implements OnInit {
        // @ts-ignore
       this.note = this.noteService.getNote(idParam!)
     });
+    this.noteNotFound();
   }
 
   onSubmit(form: NgForm) {
@@ -35,17 +36,23 @@ export class EditNoteComponent implements OnInit {
       return;
     }
     this.noteService.updateNote(this.note.id, form.value)
-    this.router.navigateByUrl('/notes')
+    this.router.navigateByUrl('/notes');
   }
 
   deleteNote() {
     this.noteService.deleteNote(this.note.id)
-    this.router.navigateByUrl('/notes')
+    this.router.navigateByUrl('/notes');
   }
 
   checker() {
     if(this.Title.length > 0 || this.Content.length > 0) {
       this.isValid = false;
+    }
+  }
+
+  noteNotFound() {
+    if(!this.note) {
+      this.router.navigateByUrl('/notes');
     }
   }
 
