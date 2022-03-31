@@ -8,10 +8,12 @@ import { Todo } from '../models/todo';
 export class TodoService {
 
   todos: Todo[] = [
-    
+    new Todo('This is a test!', true),
+    new Todo('Hey!!', false)
   ];
 
-  constructor() { }
+  constructor() {
+  }
 
   getTodos() {
     return this.todos;
