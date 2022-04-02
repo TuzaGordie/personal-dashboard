@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Bookmark } from '../models/bookmark';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class BookmarkService {
 
-  bookmarks: Bookmark[] = []
+
+  bookmarks: Bookmark[] = [
+    new Bookmark('Wikipedia', 'http://wikipedia.org'),
+    new Bookmark('google', 'http://google.com'),
+    new Bookmark('YouTube', 'http://youtube.com')
+  ]
 
   constructor() { }
+
 
   getbookmarks() {
     return this.bookmarks
