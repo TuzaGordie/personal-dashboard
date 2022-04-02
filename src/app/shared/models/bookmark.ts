@@ -1,9 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export class Bookmark {
-  id: string;
+  id: string
 
-  constructor(public title: string, public content: string) {
+  constructor(public name: string, public url: URL) {
     this.id = uuidv4();
+    url = new URL(url);
   }
 }
