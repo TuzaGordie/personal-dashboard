@@ -26,4 +26,10 @@ export class BookmarkService {
     const bookmark = this.getbookmark(id)
     Object.assign(bookmark, updatedFields)
   }
+
+  deleteBookmark(id: string) {
+    const bookmarkIndex = this.bookmarks.findIndex(b => b.id === id)
+    if (bookmarkIndex === -1) return
+    this.bookmarks.splice(bookmarkIndex, 1)
+  }
 }
