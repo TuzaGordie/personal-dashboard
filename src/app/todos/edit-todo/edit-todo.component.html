@@ -1,0 +1,19 @@
+<div class="edit-todo-wrapper container blurred-white-bg">
+    <h2 class="is-bold">Edit Todo</h2>
+    <p *ngIf="!todo">Todo not found</p>
+  
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" *ngIf="todo">
+      <div class="form-field">
+        <input class="text-box" type="text" ngModel [(ngModel)]="todo.text" (keypress)="checker()"
+         name="text" placeholder="Enter Todo Text...">
+          <p *ngIf="isValid">Enter some Text</p>
+      </div>
+  
+  
+      <div class="btns-container">
+        <a class="btn" type="button" routerLink="../">Cancel</a>
+        <button class="btn align-end">Update Todo</button>
+      </div>
+    </form>  
+  
+  </div>
